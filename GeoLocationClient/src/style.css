@@ -1,0 +1,6 @@
+@import 'root.css';
+
+.MapContainer {
+    height: 500px;
+    width: 500px;
+}

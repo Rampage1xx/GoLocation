@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  golang:
+    build:
+      context: .
+      dockerfile: golang.dockerfile
+    ports:
+      - "9000:9000"
+    networks:
+      - nodeapp-network
+
+  postgres:
+    build:
+      context: .
+      dockerfile: postgres.dockerfile
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: MyNewPass
+      POSTGRES_DB: root
+      DB_USER: meeseeks
+      DB_PASS: MEESEEKS
+      DB_NAME: pinit
+      DB_NAME2: test
+    ports:
+    - "5432:5432"
+    networks:
+     - nodeapp-network
+
+
+
+networks:
+  nodeapp-network:
+    driver: bridge
